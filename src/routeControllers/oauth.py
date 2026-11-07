@@ -41,9 +41,9 @@ def callback():
     userInfo = tokenResponse["userinfo"]
     # if roles are not included in id token, call user info endpoint explicitly 
     # userInfo = oauth.keycloak.userinfo()
-    uRoles = []
-    if oauth.keycloak.client_id in userInfo['resource_access']:
-        uRoles = userInfo['resource_access'][oauth.keycloak.client_id]["roles"]
+    resourceAccess = userInfo.get("resource_access", {})
+    clientAccess = resourceAccess.get(oauth.keycloak.client_id, {})
+    uRoles = clientAccess.get("roles", [])
     if not (isinstance(uRoles, list)):
         uRoles = [uRoles]
     createUserSession(
