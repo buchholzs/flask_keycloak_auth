@@ -7,15 +7,19 @@ __sessionUserKey = 'user'
 class User(TypedDict):
     userId: str
     userName: str
+    firstName: str
+    lastName: str
     email: str
     roles: list[str]
     idToken: str
 
 
-def createUserSession(userId: str, userName: str, email: str, roles: list[str] = [], idToken=""):
+def createUserSession(userId: str, userName: str, firstName: str, lastName: str, email: str, roles: list[str] = [], idToken=""):
     user: User = {
         "userId": userId,
         "userName": userName,
+        "firstName": firstName,
+        "lastName": lastName,
         "email": email,
         "roles": roles,
         "idToken": idToken

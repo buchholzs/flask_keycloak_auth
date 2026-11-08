@@ -47,7 +47,14 @@ def callback():
     if not (isinstance(uRoles, list)):
         uRoles = [uRoles]
     createUserSession(
-        userId=userInfo["sub"], userName=userInfo["preferred_username"], email=userInfo["email"], roles=uRoles, idToken=idToken)
+        userId=userInfo["sub"],
+        userName=userInfo["preferred_username"],
+        firstName=userInfo.get("given_name", ""),
+        lastName=userInfo.get("family_name", ""),
+        email=userInfo["email"],
+        roles=uRoles,
+        idToken=idToken
+    )
     return redirect('/')
 
 

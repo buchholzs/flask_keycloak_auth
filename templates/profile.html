@@ -11,7 +11,10 @@
     <a href="{{url_for('oauth.logout')}}">Logout</a>
     <br>
     <a href="{{url_for('index')}}">Home</a>
-    <p>Hi, {{session['user']['userName']}}!</p>
+    <p>Hi, {{session['user']['firstName']}} {{session['user']['lastName']}}!</p>
+    <p>First name - {{session['user']['firstName']}}</p>
+    <p>Last name - {{session['user']['lastName']}}</p>
+    <p>User name - {{session['user']['userName']}}</p>
     <p>Email - {{session['user']['email']}}</p>
     <p>Roles - {{session['user']['roles']}}</p>
     <p>User ID - {{session['user']['userId']}}</p>
